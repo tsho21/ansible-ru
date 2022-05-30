@@ -49,6 +49,12 @@ Vagrant.configure("2") do |config|
 			vb.customize ["modifyvm", :id, "--memory", box[:ram]]
 			vb.customize ["modifyvm", :id, "--cpus", box[:cpu]]
 		end
+		## Would like to do this but getting Vagrant / Ansible / Windows / and WSL to play 
+		## together well is error prone and not worth the effort
+#		node.vm.provision :ansible do |ansible|
+#			ansible.limit = "all"
+#			ansible.playbook = "./ansible/prov_playbook.yml"
+#		end
 	end
   end
   # The most common configuration options are documented and commented below.

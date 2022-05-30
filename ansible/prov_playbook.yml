@@ -1,0 +1,41 @@
+#
+# Playbook should be run as follows:
+# 
+# 1. Login as 'ansible' user
+# 2. Run the following to use vagrant's key first to install ansible's key
+#
+#     ansible-playbook -vvvv --private-key=../.vagrant/machines/web/virtualbox/private_key --extra-var host=web1 -i ./inventory --user vagrant -K prov_playbook.yml
+#
+#        - Just change the following in the above command:
+#              - Path to private_key (/machines/app, etc..)
+#              - host value per the inventory file
+#      
+#!/usr/bin/env ansible-playbook
+---
+- name: "Provisioning playbook for Vagrant boxes"
+  hosts: "{{ host }}"
+  gather_facts: true
+  
+  tasks:
+  - name: "Ensure user is on Host"
+    become: yes
+    user: 
+      name: "{{ lookup('env', 'USER') }}"
+      groups: "wheel"
+      shell: /bin/bash
+      password: "$6$salt$lQEo3oJHgkCJdrlxZ1F6Hbsl1rAlvMjL/uZ9gzbqUjZ7y92XxlXHaXoVz298Rb.o/s.up7OVub3wPNHJMioC./"
+      
+  - name: "Ensure SSH key on Host"
+    openssh_keypair: 
+      path: "{{  lookup('env', 'HOME') + '/.ssh/id_ed25519' }}"  
+      type: ed25519
+    delegate_to: localhost
+    run_once: true
+    
+  - name: "Copy SSH key to Guest"
+    become: yes
+    authorized_key:
+       user: "{{ lookup('env','USER') }}"
+       state: present
+       key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_ed25519.pub') }}"
+       
