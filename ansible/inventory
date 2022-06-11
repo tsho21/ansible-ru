@@ -7,3 +7,32 @@ app1 ansible_host=192.168.3.12
 [dbservers]
 db1 ansible_host=192.168.3.13
 
+[pizservers]
+pzero00 ansible_host=192.168.7.210
+pzero1 ansible_host=192.168.7.175
+pzero2 ansible_host=192.168.7.182
+pzero3 ansible_host=192.168.4.76
+pzero4 ansible_host=192.168.4.103
+pzero5 ansible_host=192.168.4.126
+pzero6 ansible_host=192.168.4.118
+pzero8 ansible_host=192.168.7.181
+pzero10 ansible_host=192.168.4.124
+pzero11 ansible_host=192.168.4.78
+pzero12 ansible_host=192.168.4.125
+
+[pilotserver]
+pzero1 ansible_host=192.168.7.175
+
+[piservers]
+salt-master ansible_host=192.168.7.154
+pi2 ansible_host=192.168.4.64
+
+[picams]
+pzcam2 ansible_host=192.168.4.84
+pzcam3 ansible_host=192.168.4.108
+
+[apple]
+macbookpro1 ansible_host=192.168.7.209
+
+
+

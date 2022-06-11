@@ -1,0 +1,6 @@
+# main entry point for common tasks
+- name: Enable the ansible user for automation
+  include_tasks: "{{ item }}"
+  loop: 
+    - install_pip.yml
+    - enable_ansible_user.yml

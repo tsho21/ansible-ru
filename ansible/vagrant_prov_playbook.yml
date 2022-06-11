@@ -4,7 +4,7 @@
 # 1. Login as 'ansible' user
 # 2. Run the following to use vagrant's key first to install ansible's key
 #
-#     ansible-playbook -vvvv --private-key=../.vagrant/machines/web/virtualbox/private_key --extra-var host=web1 -i ./inventory --user vagrant -K prov_playbook.yml
+#     ansible-playbook -vvvv --private-key=../.vagrant/machines/web/virtualbox/private_key --extra-var host=web1 -i ./inventory --user vagrant -K vagrant_prov_playbook.yml
 #
 #        - Just change the following in the above command:
 #              - Path to private_key (/machines/app, etc..)

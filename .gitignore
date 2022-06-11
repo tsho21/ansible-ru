@@ -2,3 +2,4 @@
 .ansible
 .project
 *~
+*.enc
