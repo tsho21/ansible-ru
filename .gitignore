@@ -3,3 +3,5 @@
 .project
 *~
 *.enc
+id_ed*
+id_rsa*
