@@ -4,3 +4,4 @@
   loop: 
     - install_pip.yml
     - enable_ansible_user.yml
+    - enable_pki_login.yml

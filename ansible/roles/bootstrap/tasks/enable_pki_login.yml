@@ -1,0 +1,26 @@
+# Tasks that enable the 'ansible' user on a host with ssh key access
+# ssh key based login must be enabled
+- name: "Turn off password login"
+  become: yes
+  become_method: su
+  lineinfile:
+     dest: /etc/ssh/sshd_config
+     state: present
+     regexp: '^#PasswordAuthentication'
+     line: 'PasswordAuthentication no'
+
+- name: "Turn on pubkey login"
+  become: yes
+  become_method: su
+  lineinfile:
+      dest: /etc/ssh/sshd_config
+      state: present
+      regexp: '^#PubkeyAuthentication'
+      line: 'PubkeyAuthentication yes'
+
+- name: "Restart ssh service"
+  become: yes
+  become_method: su
+  ansible.builtin.service:
+     name: ssh
+     state: restarted

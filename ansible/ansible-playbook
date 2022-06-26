@@ -1,0 +1,1 @@
+raspberry -vvvv --extra-var hosts=pilotserver -i ./inventory --user pi -K pi_prov_playbook.yml --ask-pass
